@@ -1,15 +1,66 @@
+html {
+ 
+  margin: 0;
+  padding: 0;
+  height: 1920px;
+  overflow: auto;
+  scroll-behavior: smooth;
+
+}
+
+body {
+  overflow: hidden;
+  width: 100%;
+  background-color: #242424 !important;
+ 
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: red; 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .videoBackground{
+    align-content: center;
+  
+  }
+
+  .nav {
+    min-height: 180px !important;
+    
+  }
+
+  .menu {
+
+
+    height: 50px !important;
   }
 }
 
@@ -24,9 +75,66 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.homeContent {
+ position: absolute;
+ top: 50px;
+  
 }
+
+.homeTitle {
+  position: relative;
+  color: white;
+  font-family: 'Montserrat';
+  margin-top: 340px !important; 
+
+  font-size: 72px;
+  
+}
+
+.homeText {
+  position: relative;
+  color: white;
+  font-family: 'Montserrat';
+  
+}
+
+.homeButton {
+  position: relative;
+  top: 380px;
+  background-color: white;
+  height: 50px;
+  width: 380px;
+  border-radius: 10px;
+  border: 0px;
+  font-size: 20px;
+  transition: 320ms;
+  box-shadow: 2px 3px 5px 0px black;
+}
+
+.homeButton:hover {
+  transition: 0.2ms;
+  
+  background-color: #242424;
+  -webkit-transition: background-color 0.5s;
+  box-shadow: 2px 5px 5px 1px black;
+}
+.homeButton:hover > .homeButtonText {
+  color: lightgray;
+  font-size: 25px;
+  
+}
+
+.homeButtonText {
+  transition: 320ms;
+  color: #242424;
+  font-size: 24px; 
+  text-decoration: none;
+  font-family: 'Quicksand';
+}
+
+
+
+
 
 @keyframes App-logo-spin {
   from {
@@ -36,3 +144,170 @@
     transform: rotate(360deg);
   }
 }
+
+.nav {
+  z-index: 1;
+  position: fixed;
+  display: flex;
+  width: 100% !important; 
+  background-color: #202021;
+  height: 60px !important;
+  margin: 0;
+  justify-content: center;
+  box-shadow: 0 2px 5px black;
+}
+
+.menu {
+  position: relative;
+  list-style: none;
+  display: inline-flex;
+  margin-left: auto;
+  padding: 0;
+}
+
+
+
+
+.menuList {
+  color: white;
+  padding: 5px !important;
+  margin-top: 12px !important;
+  margin-left: 20px;
+  
+  font-size: 18px;
+  font-family: 'Open Sans';
+  font-weight: lighter;
+ 
+ 
+  display: inline-block;
+  padding-bottom:2px;
+  background-image: linear-gradient(rgb(138, 138, 138), rgb(111, 111, 111));
+  background-position: 0 100%; /*OR bottom left*/
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  transition:
+    background-size 0.3s,
+    background-position 0s 0.3s; /*change after the size immediately*/
+  
+}
+
+
+.searchBar{
+  border-radius: 8px;
+  box-shadow: 2px 2px 1px 1px black;
+  min-width: 35vh;
+  height: 40px;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: lighter;
+  padding-left: 10px;
+}
+
+.searchBar:focus {
+border: none;
+background-color: white;
+resize: none;
+outline: none;
+transition: 1500ms;
+}
+
+.menuList:hover {
+ opacity: 60%;
+ 
+  background-position: 100% 100%; /*OR bottom right*/
+  background-size: 100% 1px;
+}
+
+.menuButton {
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.homePage {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding:0;
+  margin:0;
+}
+
+
+
+.videoBackground {
+  position: absolute;
+  top: -125px;
+  left: 0;
+  z-index: -5;
+  width: 100%;
+ 
+  opacity: 35%;
+  overflow: hidden;
+ 
+
+  padding:0;
+  margin:0;
+}
+
+.navLogo {
+  height: 50px;
+  width: 226px !important;
+  position: relative;
+  color: white;
+  font-family: Helvetica;
+  font-size: 36px;
+  padding: 5px;
+  left: -40px;
+  animation-name: navLogoAnim;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  display: inline-block;
+  
+  background-image: linear-gradient(rgb(0, 0, 0), rgb(187, 187, 187));
+  background-position: right -100% bottom 0;
+  background-size: 50% 2px;
+  background-repeat: no-repeat;
+  
+}
+
+@keyframes navLogoAnim {
+
+
+  to {  
+    background-position: left -100% bottom 0;
+    transition: background-position 0.5s;
+  }
+
+}
+
+.about {
+  position: absolute;
+  top: 1100px;
+  left: 0;
+  width: 100%;
+}
+
+.aboutTitle {
+  position: relative;
+  color: white;
+  top: 0px;
+  left: 300px;
+  width: 350px;
+  margin-bottom: 30px;
+  font-family: 'Open Sans'
+}
+
+.aboutText {
+  position: relative;
+  color: white;
+  top: 0px;
+  margin-top: 30px;
+}
+
+
+
