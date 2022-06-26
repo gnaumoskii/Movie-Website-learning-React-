@@ -11,14 +11,13 @@ export default function Home() {
                 <source src={bgVideo} type='video/mp4'></source>
             </video>
         </div>
+        <div className='gradientBox'> </div>
         <div className='container homeContent text-center m-0 p-0'>
           <div className='row'>
-           
             <div className='col-md-6 text-start'>
             <div><h1 className=' homeTitle'> POPMOVIES</h1></div>
-              <p className=' homeText'> 
-                This project is made for the purpose of                   
-                learning React.js,<br /> components, routes, and fetching data from APIs. 
+              <p className=' homeText anim-typewriter'> 
+                Search movies and create your own movie list!
               </p>
             </div>
             <div className='col-md-6 '>

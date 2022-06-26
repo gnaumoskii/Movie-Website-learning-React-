@@ -2,7 +2,7 @@ html {
  
   margin: 0;
   padding: 0;
-  height: 1920px;
+  height: 100vh;
   overflow: auto;
   scroll-behavior: smooth;
 
@@ -12,7 +12,13 @@ body {
   overflow: hidden;
   width: 100%;
   background-color: #242424 !important;
- 
+
+
+}
+
+::selection {
+  background: rgba(135, 207, 235, 0.679); /* WebKit/Blink Browsers */
+  
 }
 
 .App {
@@ -46,6 +52,54 @@ body {
   }
 }
 
+
+@media screen and (max-width: 1400px) { 
+  .moviePageTitle {
+    margin-left: 160px !important;
+  }
+  .moviePageText {
+    margin-left: 160px !important;
+  }
+
+
+}
+
+@media screen and (max-width: 1200px) { 
+  .moviePageTitle {
+    margin-left: 200px !important;
+  }
+  .moviePageText {
+    margin-left: 200px !important;
+  }
+
+
+}
+
+@media screen and (max-width: 1000px) { 
+  .moviePageTitle {
+    margin-left: 260px !important;
+  }
+  .moviePageText {
+    margin-left: 260px !important;
+  }
+
+
+}
+
+@media screen and (max-width: 765px) { 
+  .moviePageTitle {
+    margin-left:60px !important;
+    top: 120px !important;
+  }
+  .moviePageText {
+    margin-left: 60px !important;
+    top: 120px !important;
+  }
+
+
+}
+
+
 @media screen and (max-width: 720px) {
   .videoBackground{
     align-content: center;
@@ -58,9 +112,12 @@ body {
   }
 
   .menu {
-
-
     height: 50px !important;
+  }
+
+  .moviePageText{
+    margin-left: 260px;
+    min-width: 200px;
   }
 }
 
@@ -95,7 +152,12 @@ body {
   position: relative;
   color: white;
   font-family: 'Montserrat';
-  
+  white-space: nowrap;
+  overflow: hidden;
+  left: 5px;
+  top: -10px;
+  font-size: 20px;
+  font-weight: lighter;
 }
 
 .homeButton {
@@ -155,6 +217,20 @@ body {
   margin: 0;
   justify-content: center;
   box-shadow: 0 2px 5px black;
+  transition: 0.5s;
+}
+
+.navScrolled {
+  z-index: 1;
+  position: fixed;
+  display: flex;
+  width: 100% !important; 
+  background-color: #FFFFFF;
+  height: 60px !important;
+  margin: 0;
+  justify-content: center;
+  box-shadow: 0 2px 5px black;
+  transition: 0.5s;
 }
 
 .menu {
@@ -191,6 +267,30 @@ body {
   
 }
 
+.menuElement {
+  color:white;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.menuElement:hover {
+  color: lightgray;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.menuElementScrolled {
+  color:black;
+  text-decoration: none;
+  transition: 0.5s;
+  
+}
+
+.menuElementScrolled:hover {
+  color: darkslategray;
+  text-decoration: none;
+  transition: 0.5s;
+}
 
 .searchBar{
   border-radius: 8px;
@@ -230,7 +330,7 @@ transition: 1500ms;
 
 .homePage {
   width: 100%;
-  height: 100%;
+  height: 1920px;
   overflow: hidden;
   padding:0;
   margin:0;
@@ -240,15 +340,12 @@ transition: 1500ms;
 
 .videoBackground {
   position: absolute;
-  top: -125px;
+  top: -50px;
   left: 0;
   z-index: -5;
   width: 100%;
- 
   opacity: 35%;
   overflow: hidden;
- 
-
   padding:0;
   margin:0;
 }
@@ -263,25 +360,64 @@ transition: 1500ms;
   padding: 5px;
   left: -40px;
   animation-name: navLogoAnim;
-  animation-duration: 2.5s;
-  animation-iteration-count: infinite;
+  animation-duration: 3.5s;
+  animation-iteration-count: 1;
   animation-direction: alternate;
   display: inline-block;
-  
+  transition: 4s;
   background-image: linear-gradient(rgb(0, 0, 0), rgb(187, 187, 187));
   background-position: right -100% bottom 0;
-  background-size: 50% 2px;
+  background-size: 40% 0px;
   background-repeat: no-repeat;
   
 }
 
+.navLogoScrolled {
+  height: 50px;
+  width: 226px !important;
+  position: relative;
+  color: black;
+  font-family: Helvetica;
+  font-size: 36px;
+  padding: 5px;
+  left: -40px;
+  animation-name: navLogoAnim;
+  animation-duration: 3.5s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  display: inline-block;
+  transition: 4s;
+  background-image: linear-gradient(rgb(0, 0, 0), rgb(187, 187, 187));
+  background-position: right -100% bottom 0;
+  background-size: 40% 0px;
+  background-repeat: no-repeat;
+  
+}
+
+
 @keyframes navLogoAnim {
 
+ 0% {
+  background-size: 40% 2px;
+ }
 
-  to {  
-    background-position: left -100% bottom 0;
-    transition: background-position 0.5s;
-  }
+ 40% {
+  background-size: 40% 2px;
+ }
+
+ 70% {
+  background-position: left -100% bottom 0;
+  transition: background-position 0.5s;
+  background-size: 40% 2px;
+ }
+
+ 100% {
+  background-position: left -100% bottom 0;
+  transition: background-position 0.5s;
+  background-size: 40% 2px;
+ }
+
+
 
 }
 
@@ -305,9 +441,341 @@ transition: 1500ms;
 .aboutText {
   position: relative;
   color: white;
+  font-size: 18px;
   top: 0px;
+  left: 315px;
+  max-width: 1280px;
   margin-top: 30px;
+  text-align: start;
+}
+
+/* Animation */
+.anim-typewriter{
+animation: typewriter 3.5s steps(220) 1s 1 normal both,
+           blinkTextCursor 500ms steps(44) normal;
+}
+@keyframes typewriter{
+from{width: 0;}
+to{width: 28em;}
+}
+
+.gradientBox {
+ position:absolute;
+
+ width: 100% !important;
+ height: 200px;
+ top: 910px; 
+ left: 0px;
+ 
+
+ background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.001) 0%, #242424 60%);
+}
+
+.movieListPage {
+  position:absolute;
+ 
+  width: 100vw !important;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.movieList {
+  position: relative;
+  top: 4%;
+  width:100% !important;
+  opacity: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-y: auto;
+  overflow-x: hidden !important;
+  max-width: 80% !important;
+  display: flex;
+  padding: 0;
+  height: 70%;
+  transition: 500ms;
+
 }
 
 
 
+@keyframes fade {
+  from {
+    opacity: 0%
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+
+
+
+.searchBarMovie {
+  position:relative;
+  border-radius: 8px;
+  box-shadow: 2px 2px 1px 1px black;
+  min-width: 35vh;
+  height: 40px;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: lighter;
+  padding-left: 10px;
+  height:50px;
+  top: 120px;
+  margin-left:150px;
+}
+
+.searchBarMovie:focus {
+  border: none;
+  background-color: white;
+  resize: none;
+  outline: none;
+  transition: 1500ms;
+  }
+
+.selectFilter {
+  border-radius: 8px;
+  position: relative;
+  height:50px;
+  width:90px;
+  top: 120px;
+  margin-left:30px;
+  font-size: 18px;
+  font-weight: lighter;
+}
+
+.movieCard {
+  width: 220px;
+  height: 310px;
+  background-color:rgb(16, 14, 31);
+  border-radius: 4px;
+  margin: 15px;
+  background-size:100%;
+  transition: 350ms;
+  background-position: center;
+  box-shadow: 1px 2px 7px 1px black;
+  overflow:hidden;
+  overflow-wrap:break-word;
+
+}
+
+.movieCard:hover {
+ 
+  box-shadow: 5px 5px 10px 3px black;
+ 
+ 
+}
+
+.movieCard:hover .backgroundImage {
+ 
+  background-size: 105%;
+  opacity: 45%;
+ 
+}
+
+
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+  background-size: 100%;
+  position: relative;
+  transition: 350ms;
+  background-position: center;
+  
+
+}
+
+.movieCardList {
+
+  list-style: none;
+  display:flex;
+  width: 100%;
+  max-width: 100%;
+ 
+  margin-left: auto;
+  padding: 0;
+  flex-wrap: wrap;
+  
+}
+
+/* .movieCardTitle {
+  border: 2px solid black;
+  position: relative;
+  color:white;
+  font-size: 18px;
+  text-align: center;
+  top: 90px;
+  height: 70px !important;
+  
+  padding-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(0, 0, 0, 0.805);
+  width: 100%;
+  transition: 350ms;
+  font-family: 'Open Sans';
+}
+
+.movieCard:hover .movieCardTitle  {
+ top: 25px;
+} */
+
+.movieCardTitle {
+  position:relative;
+  color:white;
+  bottom: 230px;
+  padding-top: 60%;
+  height: 320px;
+  width: 100%;
+  opacity:0%;
+  transition: 350ms;
+  font-family: 'Montserrat';
+  
+ 
+  background-color: #00000067;
+
+}
+
+.movieCard:hover .movieCardTitle  {
+  opacity:100%;
+ }
+
+ .movieCardRating {
+   position: relative;
+   width: 70px;
+   height: 35px;
+   background-color: rgba(0, 0, 0, 0.43);
+   bottom: 300px;
+   margin-left: auto;
+    margin-right: auto;
+    margin-top: 16px;
+   border-radius: 12px;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  transition: 450ms;
+   
+ }
+
+ .ratingIcon {
+  width: 15px;
+  height: 15px;
+  position: relative;
+  bottom: 1px;
+  margin: 3px;
+ }
+
+ .ratingNumber {
+   color: rgb(14, 223, 14);
+   position: relative;
+   top: 3px;
+   font-size: 18px;
+   font-family: 'Open Sans';
+ }
+
+ .movieCard:hover .movieCardRating  {
+  opacity:100%;
+ }
+
+ .moviePagePoster {
+   position: relative;
+   top: 180px;
+  
+  background-size: 100%;
+  width: 370px;
+  height: 555px;
+  border-radius: 8px;
+  background-color:rgb(16, 14, 31);
+  box-shadow: 5px 5px 10px black;
+  margin-right: 160px;
+ }
+
+ .moviePageTitle {
+   position: relative;
+  top: 260px;
+  color: white;
+  margin-left: 120px;
+  margin-bottom: 70px;
+ }
+
+ .moviePageText {
+  position: relative;
+  top: 240px;
+  color: white;
+  margin-left: 130px;
+  min-width: 200px;
+}
+
+.addToList {
+  position: relative;
+  margin-left: 128px;
+  top: 240px;
+  height: 44px;
+  font-family: 'Open Sans';
+  font-size: 20px !important;
+  font-weight: bold !important;
+  background-color: #ffc107 !important;
+ 
+}
+
+.removeFromList {
+  position: relative;
+  margin-left: 128px;
+  top: 240px;
+  height: 44px;
+  font-family: 'Open Sans';
+  font-size: 20px !important;
+  font-weight: bold !important;
+  background-color: #dc3545 !important;
+  color: white !important;
+  
+  color:white !important;
+  
+}
+
+.addToList:hover {
+  color:white !important;
+  background-color: #e09900 !important;
+  box-shadow: 2px 3px 5px 2px black;
+ 
+}
+
+.removeFromList:hover {
+  
+  background-color: #b72d23 !important;
+  box-shadow: 2px 3px 5px 2px black;
+}
+
+.addToList:focus {
+  outline: none !important;
+  box-shadow: 2px 3px 5px 2px black !important;
+}
+
+.removeFromList:focus {
+  box-shadow: 2px 3px 5px 2px black !important;
+  outline: none !important;
+}
+
+
+.moviePageTextRating{
+  position: relative;
+  top: 260px;
+  color: white;
+  margin-left: 130px;
+  min-width: 200px;
+  font-size: 20px;
+}
+
+.moviePageTextDate{
+  position: relative;
+  top: 211px;
+ 
+  color: white;
+  margin-left: 280px;
+  min-width: 200px;
+  font-size: 20px;
+
+}
