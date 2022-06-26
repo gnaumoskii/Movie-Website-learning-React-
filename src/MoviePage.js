@@ -1,12 +1,14 @@
 import React from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, Link} from 'react-router-dom';
 
-export default function MoviePage({movies,IMG_URL}) {
+export default function MoviePage({movies,IMG_URL,myMovies,setMyMovies}) {
   
   const { id } = useParams();
   const movie = movies.find(movie => movie.id == id);
-  console.log(movie);
 
+
+  const findMovie = myMovies.find(m => m.id == movie.id);
+  const checkMovie = findMovie ? true : false;
   return (
     <div className='container' style={{display:'flex'}}>
 
@@ -46,7 +48,39 @@ export default function MoviePage({movies,IMG_URL}) {
             </span> 
           </p>
          <p className='moviePageTextDate'>RELEASE YEAR:<span style={{padding:'8px',fontWeight:'bold',color:'lightgrey', fontSize:'22px'}}>{movie.release_date.substring(0,4)}</span> </p>
-         <button className='addToList btn btn-warning'>ADD TO YOUR LIST</button>
+        <form onSubmit={e => e.preventDefault()}>
+            {
+              checkMovie ? 
+              <Link to="/movies">
+              <button className='removeFromList btn' 
+              onClick={() =>{  
+              
+                const myNewList = myMovies.filter(m => m.id != movie.id);
+                setMyMovies(myNewList);
+                
+              }}>
+              REMOVE FROM YOUR LIST
+              </button>
+              </Link>
+            : 
+            <Link to="/movies">
+               <button className='addToList btn' 
+               onClick={() =>{  
+                   const myNewList = [...myMovies,movie];
+                   setMyMovies(myNewList);
+                 
+               }}>
+               ADD TO YOUR LIST
+               </button>
+               </Link>
+
+            }
+      
+
+
+
+        </form>
+        
        </div>
      
         

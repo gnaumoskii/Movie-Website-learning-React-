@@ -2,7 +2,7 @@ import React from 'react'
 import Movie from './Movie'
 
 
-export default function MovieList( {movies,setMovies, IMG_URL, API_URL, SEARCH_URL, getData} ) {
+export default function MovieList( {myMovies,movies,setMovies, IMG_URL, API_URL, SEARCH_URL, getData} ) {
 
 
 
@@ -45,7 +45,7 @@ export default function MovieList( {movies,setMovies, IMG_URL, API_URL, SEARCH_U
         
         {
           movies.length ? 
-           movies.map((movie,index)=> {
+           movies.filter(movie => movie.vote_average > 0).map((movie,index)=> {
              return <li key={index}><Movie movie={movie} IMG_URL={IMG_URL}/></li>
            })
            : <h1>Currently there are no movies on the list.</h1>

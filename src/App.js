@@ -6,10 +6,12 @@ import Layout from './Layout';
 import MovieList from './MovieList';
 import Movie from './Movie';
 import MoviePage from './MoviePage';
+import MyMovieList from './MyMovieList';
 
 import { Route, Routes, matchPath, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
+
 
 
 function App() {
@@ -20,9 +22,9 @@ function App() {
   const SEARCH_URL = BASE_URL + '/search/movie?' + API_KEY;
 
 
-  const [movies,setMovies] = useState({});
-  const [myMovies,setMyMovies] = useState({});
-  const [search,setSearch] = useState({});
+  const [movies,setMovies] = useState([{}]);
+  const [myMovies,setMyMovies] = useState([{}]);
+
 
   const getData = async (URL) => {
     await axios.get(URL)
@@ -45,8 +47,11 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />}/>
         <Route path='movies' >
-          <Route index  element={<MovieList  movies={movies} setMovies={setMovies} IMG_URL={IMG_URL} API_URL={API_URL} SEARCH_URL={SEARCH_URL} getData={getData}/>}/>
-          <Route path='/movies/:id/' element={<MoviePage movies={movies} IMG_URL={IMG_URL}/>} />
+          <Route index  element={<MovieList myMovies={myMovies}  movies={movies} setMovies={setMovies} IMG_URL={IMG_URL} API_URL={API_URL} SEARCH_URL={SEARCH_URL} getData={getData}/>}/>
+          <Route path='/movies/:id/' element={<MoviePage movies={movies} IMG_URL={IMG_URL} myMovies={myMovies} setMyMovies={setMyMovies}/>} />
+        </Route>
+        <Route path='list'>
+          <Route index element={<MyMovieList myMovies={myMovies} setMyMovies={setMyMovies} IMG_URL={IMG_URL} />} />
         </Route>
       </Route>
     

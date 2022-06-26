@@ -112,8 +112,6 @@ body {
   }
 
   .menu {
-
-
     height: 50px !important;
   }
 
@@ -219,6 +217,20 @@ body {
   margin: 0;
   justify-content: center;
   box-shadow: 0 2px 5px black;
+  transition: 0.5s;
+}
+
+.navScrolled {
+  z-index: 1;
+  position: fixed;
+  display: flex;
+  width: 100% !important; 
+  background-color: #FFFFFF;
+  height: 60px !important;
+  margin: 0;
+  justify-content: center;
+  box-shadow: 0 2px 5px black;
+  transition: 0.5s;
 }
 
 .menu {
@@ -255,6 +267,30 @@ body {
   
 }
 
+.menuElement {
+  color:white;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.menuElement:hover {
+  color: lightgray;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.menuElementScrolled {
+  color:black;
+  text-decoration: none;
+  transition: 0.5s;
+  
+}
+
+.menuElementScrolled:hover {
+  color: darkslategray;
+  text-decoration: none;
+  transition: 0.5s;
+}
 
 .searchBar{
   border-radius: 8px;
@@ -319,6 +355,28 @@ transition: 1500ms;
   width: 226px !important;
   position: relative;
   color: white;
+  font-family: Helvetica;
+  font-size: 36px;
+  padding: 5px;
+  left: -40px;
+  animation-name: navLogoAnim;
+  animation-duration: 3.5s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  display: inline-block;
+  transition: 4s;
+  background-image: linear-gradient(rgb(0, 0, 0), rgb(187, 187, 187));
+  background-position: right -100% bottom 0;
+  background-size: 40% 0px;
+  background-repeat: no-repeat;
+  
+}
+
+.navLogoScrolled {
+  height: 50px;
+  width: 226px !important;
+  position: relative;
+  color: black;
   font-family: Helvetica;
   font-size: 36px;
   padding: 5px;
@@ -632,6 +690,7 @@ to{width: 28em;}
   border-radius: 8px;
   background-color:rgb(16, 14, 31);
   box-shadow: 5px 5px 10px black;
+  margin-right: 160px;
  }
 
  .moviePageTitle {
@@ -658,14 +717,48 @@ to{width: 28em;}
   font-family: 'Open Sans';
   font-size: 20px !important;
   font-weight: bold !important;
+  background-color: #ffc107 !important;
+ 
+}
+
+.removeFromList {
+  position: relative;
+  margin-left: 128px;
+  top: 240px;
+  height: 44px;
+  font-family: 'Open Sans';
+  font-size: 20px !important;
+  font-weight: bold !important;
+  background-color: #dc3545 !important;
+  color: white !important;
+  
+  color:white !important;
+  
 }
 
 .addToList:hover {
   color:white !important;
-  background-color: orange !important;
+  background-color: #e09900 !important;
   box-shadow: 2px 3px 5px 2px black;
  
 }
+
+.removeFromList:hover {
+  
+  background-color: #b72d23 !important;
+  box-shadow: 2px 3px 5px 2px black;
+}
+
+.addToList:focus {
+  outline: none !important;
+  box-shadow: 2px 3px 5px 2px black !important;
+}
+
+.removeFromList:focus {
+  box-shadow: 2px 3px 5px 2px black !important;
+  outline: none !important;
+}
+
 
 .moviePageTextRating{
   position: relative;

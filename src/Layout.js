@@ -9,7 +9,7 @@ export default function Layout() {
     <div className='App'>
         <Navbar />
         <Outlet />
-        <Footer />
+
     </div>
  
   )
