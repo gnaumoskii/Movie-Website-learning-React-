@@ -1,5 +1,5 @@
 import React from 'react'
-import bgVideo from './materials/trailer-background.mp4'
+import bgVideo from '../assets/trailer-background.mp4'
 import { Link } from 'react-router-dom'
 
 export default function Home() {

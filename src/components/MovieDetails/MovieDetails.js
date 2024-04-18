@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import { getMovie } from "./api/movieslist";
-import { getMyMovie, getMyMovies } from "./api/mymovielist";
-import { removeMyMovie, addMyMovie } from "./api/mymovielist";
+import { useParams, useNavigate } from "react-router-dom";
+import { getMovie } from "../../api/movieslist";
+import { getMyMovie } from "../../api/mymovielist";
+import { removeMyMovie, addMyMovie } from "../../api/mymovielist";
 
-export default function MoviePage() {
+export default function MovieDetails() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [movie, setMovie] = useState(null);
@@ -88,7 +88,7 @@ export default function MoviePage() {
                                 <p className="moviePageTextDate">
                                     RELEASE YEAR:
                                     <span style={{ padding: "8px", fontWeight: "bold", color: "lightgrey", fontSize: "22px" }}>
-                                        {movie.release_date.substring(0, 4)}
+                                        {new Date(movie.release_date).toLocaleDateString(undefined, { year: "numeric" })}
                                     </span>{" "}
                                 </p>
                                 {checkMovie.current ? (

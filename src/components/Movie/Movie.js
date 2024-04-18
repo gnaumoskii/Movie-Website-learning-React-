@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import ratingIcon from './materials/starIcon.png'
+import ratingIcon from '../../assets/starIcon.png'
 
 export default function Movie({movie}) {
   return (

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Movie from './Movie'
-import { getMovies, searchMovies } from './api/movieslist';
+import Movie from '../Movie/Movie'
+import { getMovies, searchMovies } from '../../api/movieslist';
 
 
 export default function MovieList( {IMG_URL, API_URL, SEARCH_URL} ) {

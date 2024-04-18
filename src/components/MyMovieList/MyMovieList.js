@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Movie from "./Movie";
-import { getMyMovies } from "./api/mymovielist";
+import Movie from "../Movie/Movie";
+import { getMyMovies } from "../../api/mymovielist";
 
 export default function MyMovieList() {
     const [myMovies, setMyMovies] = useState([]);

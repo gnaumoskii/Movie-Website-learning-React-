@@ -1,30 +1,20 @@
 
 import "./App.css";
-import Home from "./Home";
-import Layout from "./Layout";
-import MovieList from "./MovieList";
-import MoviePage from "./MoviePage";
-import MyMovieList from "./MyMovieList";
-
+import Home from "./pages/Home";
+import Layout from "./layouts/Layout";
+import MovieList from "./components/MovieList/MovieList";
+import MovieDetails from "./components/MovieDetails/MovieDetails";
+import MyMovieList from "./components/MyMovieList/MyMovieList";
 import { Route, Routes } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { getMyMovies } from "./api/mymovielist";
 
 function App() {
-    //Get My Movie List
-
-    useEffect(() => {
-      getMyMovies();
-
-    }, []);
-
     return (
         <Routes>
             <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
                 <Route path="movies">
                     <Route index element={<MovieList  />} />
-                    <Route path="/movies/:id/" element={<MoviePage />} />
+                    <Route path="/movies/:id/" element={<MovieDetails />} />
                 </Route>
                 <Route path="list">
                     <Route index element={<MyMovieList />} />
