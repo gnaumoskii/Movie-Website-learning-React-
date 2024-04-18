@@ -34,9 +34,6 @@ export default function Navbar() {
                 <li className='menuList'>  <Link to="/" className={scrolled ? 'menuElementScrolled' : 'menuElement'} onClick={() => {window.scrollBy(0,-1080)}}>HOME</Link></li>
                 <li className='menuList'><Link to="/movies"  className={scrolled ? 'menuElementScrolled' : 'menuElement'}  >MOVIES</Link></li>
                 <li className='menuList text-truncate'><Link to="/list"  className={scrolled ? 'menuElementScrolled' : 'menuElement'} >MY MOVIE LIST</Link></li>
-
-                {/* <li className='menuList'><button className=' menuButton' onClick={()=>{window.scrollBy(0,1080)}}> ABOUT </button>   </li> */}
-                <li className='menuList'><Link to="/"  className={scrolled ? 'menuElementScrolled' : 'menuElement'} onClick={() => {window.scrollBy(0,1080)}} > ABOUT</Link>  </li>
             </ul>
         </div>
         <div className='col-xl-4 text-end' >

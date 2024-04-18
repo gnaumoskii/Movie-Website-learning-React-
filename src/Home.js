@@ -1,7 +1,6 @@
 import React from 'react'
 import bgVideo from './materials/trailer-background.mp4'
 import { Link } from 'react-router-dom'
-import About from './About'
 
 export default function Home() {
   return (
@@ -25,14 +24,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className='row'>
-          <div className='col-12'>
-            <div className='about'>
-              <About />
-            </div>
-          </div>
-        </div>
-      
     </div>
   )
 }

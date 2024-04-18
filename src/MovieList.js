@@ -1,8 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Movie from './Movie'
+import { getMovies, searchMovies } from './api/movieslist';
 
 
-export default function MovieList( {myMovies,movies,setMovies, IMG_URL, API_URL, SEARCH_URL, getData} ) {
+export default function MovieList( {IMG_URL, API_URL, SEARCH_URL} ) {
+  const [movies, setMovies] = useState([]);
+  const [searchTitle, setSearchTitle] = useState("");
+
+
+  const getMoviesListHandler = async () => {
+    const moviesList = await getMovies();
+    console.log(moviesList);
+    setMovies(moviesList);
+  }
+
+  const searchMoviesHandler = async (title) => {
+    const searchedMovies = await searchMovies(title);
+    console.log(searchedMovies);
+    setMovies(searchedMovies);
+  }
+  
+  useEffect(()=>{
+    if(searchTitle) {
+      searchMoviesHandler(searchTitle);
+    } else {
+      getMoviesListHandler()
+    }
+  },[searchTitle])
 
 
 
@@ -14,33 +38,13 @@ export default function MovieList( {myMovies,movies,setMovies, IMG_URL, API_URL,
           <input className='searchBarMovie'  
             type='text' 
             placeholder='Search movie...'
-            onChange={(e)=>{
-           
-              if(e.target.value ==''){
-                const  newList = getData(API_URL);
-                setMovies(newList);
-              } else {
-
-               
-                const  newList = getData(SEARCH_URL+'&query='+ e.target.value);
-                setMovies(newList);
-             
-                
-              }
-       
-            }}
+            onChange={(e) => setSearchTitle(e.target.value)}
             />
-          <select className='selectFilter'>
-              <option>Genre</option>
-            </select>
-              
-            <select className='selectFilter'>
-              <option>Year</option>
-            </select>
         </form>
       </div>
       <hr className='col-12' style={{position: 'relative' , color: 'white', width: '90%', marginLeft: 'auto', marginRight: 'auto',textAlign:'center',top:'90px'}} />      
       <div id='mlist' className='movieList col-12 '>
+
         <ul className='movieCardList '>
         
         {
