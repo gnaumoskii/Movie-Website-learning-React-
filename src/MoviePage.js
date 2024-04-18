@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { getMovie } from "./api/movieslist";
-import { getMyMovies } from "./api/mymovielist";
+import { getMyMovie, getMyMovies } from "./api/mymovielist";
 import { removeMyMovie, addMyMovie } from "./api/mymovielist";
 
 export default function MoviePage() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [movie, setMovie] = useState(null);
-    const [myMovies, setMyMovies] = useState([]);
-
+    let checkMovie = useRef(false);
     useEffect(() => {
         const movieDataHandler = async () => {
+            const myMovie = await getMyMovie(id);
+            if (myMovie !== null) {
+                setMovie(myMovie);
+                checkMovie.current = true;
+                return;
+            }
+
             const movieData = await getMovie(id);
-            const myMoviesData = await getMyMovies();
-            setMyMovies(myMoviesData);
             setMovie(movieData);
-            console.log(myMoviesData);
-            console.log(movieData);
-          };
-          movieDataHandler();
+            
+        };
+        movieDataHandler();
     }, [id]);
-    
-    let checkMovie = !!myMovies.filter(myMovie => myMovie.id === movie.id).length
     return (
-        <div className="container" style={{ display: "flex" }}>
-            <h1>Hello</h1>
+        <div className="container d-flex">
             {movie && (
                 <>
                     <div
@@ -51,7 +51,10 @@ export default function MoviePage() {
 
                     <div className="row" style={{ minHeight: "90vh", overflow: "auto" }}>
                         <div className="col-md-3" style={{ padding: "50px" }}>
-                            <div className="moviePagePoster" style={movie ? { backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})` } : {}}>
+                            <div
+                                className="moviePagePoster"
+                                style={movie ? { backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})` } : {}}
+                            >
                                 {" "}
                             </div>
                         </div>
@@ -88,29 +91,27 @@ export default function MoviePage() {
                                         {movie.release_date.substring(0, 4)}
                                     </span>{" "}
                                 </p>
-                                <form onSubmit={(e) => e.preventDefault()}>
-                                    {checkMovie ? (
-                                        <button
-                                            className="removeFromList btn"
-                                            onClick={() => {
-                                                removeMyMovie(movie.id);
-                                                navigate("/list");
-                                            }}
-                                        >
-                                            REMOVE FROM YOUR LIST
-                                        </button>
-                                    ) : (
-                                        <button
-                                            className="addToList btn"
-                                            onClick={() => {
-                                                addMyMovie(movie);
-                                                navigate("/movies");
-                                            }}
-                                        >
-                                            ADD TO YOUR LIST
-                                        </button>
-                                    )}
-                                </form>
+                                {checkMovie.current ? (
+                                    <button
+                                        className="removeFromList btn"
+                                        onClick={() => {
+                                            removeMyMovie(movie.id);
+                                            navigate("/list");
+                                        }}
+                                    >
+                                        REMOVE FROM YOUR LIST
+                                    </button>
+                                ) : (
+                                    <button
+                                        className="addToList btn"
+                                        onClick={() => {
+                                            addMyMovie(movie);
+                                            navigate("/list");
+                                        }}
+                                    >
+                                        ADD TO YOUR LIST
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>

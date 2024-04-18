@@ -7,16 +7,13 @@ export default function MovieList( {IMG_URL, API_URL, SEARCH_URL} ) {
   const [movies, setMovies] = useState([]);
   const [searchTitle, setSearchTitle] = useState("");
 
-
   const getMoviesListHandler = async () => {
     const moviesList = await getMovies();
-    console.log(moviesList);
     setMovies(moviesList);
   }
 
   const searchMoviesHandler = async (title) => {
     const searchedMovies = await searchMovies(title);
-    console.log(searchedMovies);
     setMovies(searchedMovies);
   }
   

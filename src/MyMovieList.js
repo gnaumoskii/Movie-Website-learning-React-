@@ -10,7 +10,6 @@ export default function MyMovieList() {
     useEffect(() => {
       const getMyMoviesHandler = async () => {
         const myMoviesData = await getMyMovies();
-        console.log(myMoviesData)
         setMyMovies(myMoviesData);
       }
       getMyMoviesHandler();

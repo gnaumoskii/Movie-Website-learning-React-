@@ -23,7 +23,6 @@ export const getMovies = async () => {
 };
 
 export const getMovie = async (id) => {
-    console.log("YO")
     try {
         const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}`, options);
         if (response.status !== 200) {
