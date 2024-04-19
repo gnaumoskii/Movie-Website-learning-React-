@@ -8,8 +8,7 @@ const api = axios.create({
 //Add movies to My Movies List
 export const addMyMovie = async (movie) => {
     try {
-        const response = await api.post("http://localhost:3500/mymovielist", movie);
-        console.log(response);
+        await api.post("http://localhost:3500/mymovielist", movie);
     } catch (error) {
         console.log(error);
     }
@@ -18,8 +17,7 @@ export const addMyMovie = async (movie) => {
 //Remove movie from My Movie List
 export const removeMyMovie = async (id) => {
     try {
-        const response = await api.delete(`./mymovielist/${id}`);
-        console.log(response);
+        await api.delete(`./mymovielist/${id}`);
     } catch (error) {
         console.log(error);
     }
@@ -38,8 +36,10 @@ export const getMyMovies = async () => {
 export const getMyMovie = async (id) => {
     try {
         const response = await api.get(`http://localhost:3500/mymovielist/${id}`);
-        console.log(response);
+        const data = await response.data;
+        return data;
     } catch (error) {
         console.log(error);
+        return null;
     }
 };
