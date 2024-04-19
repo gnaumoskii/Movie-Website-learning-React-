@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Movie from "../Movie/Movie";
 import { getMyMovies } from "../../api/mymovielist";
+import "../MovieList/MovieList.css";
 
 export default function MyMovieList() {
     const [myMovies, setMyMovies] = useState([]);
@@ -15,28 +16,14 @@ export default function MyMovieList() {
       getMyMoviesHandler();
     }, []);
     return (
-        <div className="movieListPage row text-center">
-            {myMovies && (
-                <>
-                    <div className="col-12 text-start">
-                        <h1 style={{ color: "white", position: "relative", top: "114px", marginLeft: "148px", fontFamily: "Open Sans", fontWeight: "normal" }}>
+        <div className="movies container-fluid">
+                    <div className="movies__options container">
+                        <h1 className="movies__options__heading">
                             My List
                         </h1>
                     </div>
-                    <hr
-                        className="col-12"
-                        style={{
-                            position: "relative",
-                            color: "white",
-                            width: "90%",
-                            marginLeft: "auto",
-                            marginRight: "auto",
-                            textAlign: "center",
-                            top: "90px",
-                        }}
-                    />
-                    <div className="movieList col-12 ">
-                        <ul className="movieCardList ">
+                    <div className="movies__list-container container ">
+                        <ul className="movies__list ">
                             {myMovies.length ? (
                                 myMovies
                                     .filter((movie) => movie.vote_average > 0)
@@ -52,8 +39,6 @@ export default function MyMovieList() {
                             )}
                         </ul>
                     </div>
-                </>
-            )}
         </div>
     );
 }

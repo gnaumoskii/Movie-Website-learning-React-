@@ -1,29 +1,29 @@
-import React from 'react'
-import bgVideo from '../assets/trailer-background.mp4'
-import { Link } from 'react-router-dom'
-
+import React from "react";
+import bgVideo from "../assets/trailer-background.mp4";
+import { Link } from "react-router-dom";
+import "./Home.css";
 export default function Home() {
-  return (
-    <div className='homePage container'>
-        <div className='home'>
-            <video className='videoBackground' autoPlay loop muted>
-                <source src={bgVideo} type='video/mp4'></source>
+    return (
+        <div className="home container">
+            <video className="home__background-video" autoPlay loop muted>
+                <source src={bgVideo} type="video/mp4"></source>
             </video>
-        </div>
-        <div className='gradientBox'> </div>
-        <div className='container homeContent text-center m-0 p-0'>
-          <div className='row'>
-            <div className='col-md-6 text-start'>
-            <div><h1 className=' homeTitle'> POPMOVIES</h1></div>
-              <p className=' homeText anim-typewriter'> 
-                Search movies and create your own movie list!
-              </p>
+
+            <div className="container home__content">
+                <div className="home__content__text">
+                    <h1 className=" home__content__text-title"> POPMOVIES</h1>
+                    <div className="home__content__text-description-container">
+                        <p className="home__content__text-description">Search movies and create your own movie list!</p>
+                    </div>
+                </div>
+                <div className=" ">
+                    <button className="home__content__btn--movie-list">
+                        <Link to="/movies" className="home__content__btn--movie-list__text">
+                            CHECK OUT THE MOVIE LIST{" "}
+                        </Link>{" "}
+                    </button>
+                </div>
             </div>
-            <div className='col-md-6 '>
-             <button className='homeButton' ><Link to="/movies" className='homeButtonText' style={{}} >CHECK OUT THE MOVIE LIST </Link> </button>
-            </div>
-          </div>
         </div>
-    </div>
-  )
+    );
 }

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getMovie } from "../../api/movieslist";
 import { getMyMovie } from "../../api/mymovielist";
 import { removeMyMovie, addMyMovie } from "../../api/mymovielist";
+import "./MovieDetails.css";
 
 export default function MovieDetails() {
     const { id } = useParams();
@@ -20,99 +21,64 @@ export default function MovieDetails() {
 
             const movieData = await getMovie(id);
             setMovie(movieData);
-            
         };
         movieDataHandler();
     }, [id]);
     return (
-        <div className="container d-flex">
+        <div className="movie-details ">
             {movie && (
                 <>
+                    <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title} className="movie-details__background-poster" />
+
                     <div
-                        style={
-                            movie.poster_path != null
-                                ? {
-                                      position: "absolute",
-                                      top: "0",
-                                      left: "0",
-                                      width: "100vw",
-                                      height: "100vh",
-                                      opacity: "15%",
-                                      backgroundPosition: "center",
-                                      backgroundSize: "100%",
-                                      filter: "blur(16px)",
-                                      backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
-                                  }
-                                : {}
-                        }
+                        className="movie-details__content container d-md-flex flex-direction-row justify-content-center"
+                        style={{ minHeight: "90vh", overflow: "auto" }}
                     >
-                        {" "}
-                    </div>
+                        <img className="movie-details__poster col-6" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title} />
 
-                    <div className="row" style={{ minHeight: "90vh", overflow: "auto" }}>
-                        <div className="col-md-3" style={{ padding: "50px" }}>
-                            <div
-                                className="moviePagePoster"
-                                style={movie ? { backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})` } : {}}
-                            >
-                                {" "}
+                        <div className="col-6">
+                            <div className="movie-details__info">
+                                <h1 className="movie-details__info__title">{movie && movie.original_title}</h1>
+                                <p className="movie-details__info__description">{movie && movie.overview}</p>
+                                <div className="d-flex">
+                                    <p className="movie-details__info__rating">
+                                        RATING:
+                                        <span
+                                            className="movie-details__info__rating-value"
+                                            style={movie.vote_average < 4 ? { color: "red" } : movie.vote_average < 7 ? { color: "orange" } : { color: "green" }}
+                                        >
+                                            {movie.vote_average}
+                                        </span>
+                                    </p>
+                                    <p className="movie-details__info__release-date">
+                                        RELEASE YEAR:
+                                        <span className="movie-details__info__release-date__value">
+                                            {new Date(movie.release_date).toLocaleDateString(undefined, { year: "numeric" })}
+                                        </span>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-
-                        <div className="col-md-6 text-start">
-                            <div>
-                                <h1 className="moviePageTitle">{movie && movie.original_title}</h1>
-                            </div>
-
-                            <div>
-                                <hr className="moviePageHR" style={{ position: "relative", color: "white", top: "220px", marginLeft: "120px" }}></hr>
-                                <p className="moviePageText">{movie && movie.overview}</p>
-                                <hr className="moviePageHR" style={{ position: "relative", color: "white", top: "260px", marginLeft: "120px" }}></hr>
-                            </div>
-
-                            <div>
-                                <p className="moviePageTextRating">
-                                    RATING:
-                                    <span
-                                        style={
-                                            movie.vote_average < 4
-                                                ? { color: "red", padding: "8px", fontWeight: "bold", fontSize: "22px" }
-                                                : movie.vote_average < 7
-                                                ? { color: "orange", padding: "8px", fontWeight: "bold", fontSize: "22px" }
-                                                : { color: "green", padding: "8px", fontWeight: "bold", fontSize: "22px" }
-                                        }
-                                    >
-                                        {movie.vote_average}
-                                    </span>
-                                </p>
-                                <p className="moviePageTextDate">
-                                    RELEASE YEAR:
-                                    <span style={{ padding: "8px", fontWeight: "bold", color: "lightgrey", fontSize: "22px" }}>
-                                        {new Date(movie.release_date).toLocaleDateString(undefined, { year: "numeric" })}
-                                    </span>{" "}
-                                </p>
-                                {checkMovie.current ? (
-                                    <button
-                                        className="removeFromList btn"
-                                        onClick={() => {
-                                            removeMyMovie(movie.id);
-                                            navigate("/list");
-                                        }}
-                                    >
-                                        REMOVE FROM YOUR LIST
-                                    </button>
-                                ) : (
-                                    <button
-                                        className="addToList btn"
-                                        onClick={() => {
-                                            addMyMovie(movie);
-                                            navigate("/list");
-                                        }}
-                                    >
-                                        ADD TO YOUR LIST
-                                    </button>
-                                )}
-                            </div>
+                            {checkMovie.current ? (
+                                <button
+                                    className="movie-details__btn-remove"
+                                    onClick={() => {
+                                        removeMyMovie(movie.id);
+                                        navigate("/list");
+                                    }}
+                                >
+                                    REMOVE FROM YOUR LIST
+                                </button>
+                            ) : (
+                                <button
+                                    className="addToList movie-details__btn-add"
+                                    onClick={() => {
+                                        addMyMovie(movie);
+                                        navigate("/list");
+                                    }}
+                                >
+                                    ADD TO YOUR LIST
+                                </button>
+                            )}
                         </div>
                     </div>
                 </>

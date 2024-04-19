@@ -1,0 +1,38 @@
+.nav-bar {
+    background-color: #151516;
+    box-shadow: 0 2px 5px black;
+    width: 100vw;
+    z-index: 1;
+    
+}
+
+
+.nav-bar__logo {
+    color: white !important;
+    font-family: Helvetica;
+    font-size: 36px !important;
+    
+}
+
+
+
+.nav-bar__menu {
+    position: relative;
+    list-style: none;
+    display: flex;
+    margin-left: 20px;
+    padding: 0;
+}
+
+.nav-bar__menu-item__link {
+    color: white !important;
+    font-size: 18px;
+    font-family: "Open Sans";
+    font-weight: lighter;
+    text-decoration: none;
+    transition: color 0.2s ease-out;
+}
+
+.nav-bar__menu-item__link:hover {
+    color: lightgray;
+}
