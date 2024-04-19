@@ -10,7 +10,8 @@ body {
   overflow: hidden;
   width: 100%;
   background-color: #1d1b1b !important;
-
+  min-height: 100vh;
+  position: relative;
 
 }
 
@@ -40,3 +41,4 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #b30000; 
 }
+
