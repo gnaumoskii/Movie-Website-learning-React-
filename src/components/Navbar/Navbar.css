@@ -34,5 +34,5 @@
 }
 
 .nav-bar__menu-item__link:hover {
-    color: lightgray;
+    color: rgb(168, 162, 162) !important;
 }

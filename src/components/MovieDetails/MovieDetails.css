@@ -13,6 +13,7 @@
 .movie-details__content {
     height: 100%;
     align-items: center;
+    padding-bottom: 32px;
     animation: fade-from-bottom 0.35s ease-out;
     
 }
@@ -92,16 +93,17 @@
 .movie-details__btn-add {
     position: relative;
     border: none;
-    
+    border-radius: 8px;
+    padding: 8px 12px;
     height: 44px;
     font-family: "Open Sans";
     font-size: 20px;
     font-weight: bold;
     background-color: #ffc107;
+    transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
 }
 .movie-details__btn-add:hover {
-    color: white;
-    background-color: #e09900;
+    background-color: #f3f724;
     box-shadow: 2px 3px 5px 2px black;
 }
 

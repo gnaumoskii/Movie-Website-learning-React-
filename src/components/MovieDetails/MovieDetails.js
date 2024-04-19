@@ -61,8 +61,8 @@ export default function MovieDetails() {
                             {checkMovie.current ? (
                                 <button
                                     className="movie-details__btn-remove"
-                                    onClick={() => {
-                                        removeMyMovie(movie.id);
+                                    onClick={async () => {
+                                        await removeMyMovie(movie.id);
                                         navigate("/list");
                                     }}
                                 >
@@ -71,8 +71,8 @@ export default function MovieDetails() {
                             ) : (
                                 <button
                                     className="addToList movie-details__btn-add"
-                                    onClick={() => {
-                                        addMyMovie(movie);
+                                    onClick={async () => {
+                                        await addMyMovie(movie);
                                         navigate("/list");
                                     }}
                                 >
